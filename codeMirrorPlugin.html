@@ -2,12 +2,31 @@
 <html>
 <head>
 	<title>Plugin moved</title>
+<script>
+	var timeleft = 8;
+	var interval;
+
+	function update() {
+		if (typeof interval !== "number") {
+			interval = setInterval(update, 1000);
+		}
+		document.getElementById("redirect").textContent = "Automatically redirecting you in " + timeleft + " seconds...";
+		if (timeleft-- <= 0) {
+			clearInterval(interval);
+			window.location = 'https://orion-codemirror.googlecode.com/git/codeMirrorPlugin.html';
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", update);
+	</script>
 </head>
 <body>
 <h1>Plugin moved</h1>
 
 <p>The orion-codemirror plugin is now hosted here: <a href="https://orion-codemirror.googlecode.com/git/codeMirrorPlugin.html">https://orion-codemirror.googlecode.com/git/codeMirrorPlugin.html</a></p>
 
+<p>Please use the URL above from now on, as this page will eventually be taken down.</p>
 
+<p id="redirect"></p>
 </body>
 </html>
